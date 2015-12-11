@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class SATProblemInstance {
     private ArrayList<Clause> clauses;
-    private ArrayList<Literals> literals;
+    private ArrayList<Literal> literal;
     
     /*
      * Setters and getters.
@@ -16,10 +16,10 @@ public class SATProblemInstance {
     public void setClauses(ArrayList<Clause> clauses) {
         this.clauses = clauses;
     }
-    public ArrayList<Literals> getLiterals() {
-        return literals;
+    public ArrayList<Literal> getLiterals() {
+        return literal;
     }
-    public void setLiterals(ArrayList<Literals> literals) {
-        this.literals = literals;
+    public void setLiterals(ArrayList<Literal> literal) {
+        this.literal = literal;
     }
 }

@@ -3,7 +3,7 @@ package SAT;
 import java.util.ArrayList;
 
 public class Clause {
-	private ArrayList<Literals> literalsSet;
+	private ArrayList<Literal> literalsSet;
 	
 	
 	
