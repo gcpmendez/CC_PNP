@@ -1,15 +1,14 @@
-package SAT;
+package sat;
 
 import java.util.ArrayList;
 
-public class SATProblemInstance {
+public class Instance {
     private ArrayList<Clause> clauses;
     private ArrayList<Literals> literals;
     
     /*
      * Setters and getters.
      */
-    
     public ArrayList<Clause> getClauses() {
         return clauses;
     }
@@ -22,4 +21,5 @@ public class SATProblemInstance {
     public void setLiterals(ArrayList<Literals> literals) {
         this.literals = literals;
     }
+    
 }
