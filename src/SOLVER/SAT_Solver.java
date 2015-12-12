@@ -1,6 +1,7 @@
 package SOLVER;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import SAT.Literal;
 import SAT.SATProblemInstance;
@@ -27,5 +28,12 @@ public abstract class SAT_Solver {
         }
         
         return false;
+    }
+
+    private boolean getValueOfLiteral(Literal literal, HashMap<String, Boolean> literalConfiguration){
+        boolean rawValue = literalConfiguration.get(literal.getName());
+        if (literal.isNegated()){
+            return !rawValue;
+        } else return rawValue;
     }
 }

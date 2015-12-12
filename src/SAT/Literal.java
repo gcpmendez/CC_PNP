@@ -5,27 +5,17 @@ public class Literal {
 	private String name;
 	// Si el literal esta negado
 	private boolean negated;
-	// Valor que esta tomando (antes de ser negada o no)
-	private boolean rawValue;
 	
-	public Literal(String name, boolean negated, boolean rawValue){
+	public Literal(String name, boolean negated){
 	    this.name = name;
 	    this.negated = negated;
-	    this.rawValue = rawValue;
 	}
-	
-	/**
-	 * Si al crear no se pasa valor inicial, se asume true.
-	 */
-	public Literal(String name, boolean negated){
-        this(name, negated, true);
-    }
 	
 	/**
 	 * Constructor de copia.
 	 */
 	public Literal(Literal other){
-	    this(other.name, other.negated, other.rawValue);
+	    this(other.name, other.negated);
 	}
 	
 	public String toString () {
@@ -48,14 +38,6 @@ public class Literal {
 
     public void setNegated(boolean negated) {
         this.negated = negated;
-    }
-
-    public boolean isRawValue() {
-        return rawValue;
-    }
-
-    public void setRawValue(boolean rawValue) {
-        this.rawValue = rawValue;
     }
 
     public String getName() {
