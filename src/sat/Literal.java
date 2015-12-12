@@ -1,19 +1,19 @@
-package SAT;
+package sat;
 
 public class Literal {
-    // Nombre del literal
+    // Nombre del literal.
 	private String name;
-	// Si el literal esta negado
+	
+	// Si el literal esta negado o no.
 	private boolean negated;
 	
+	/** Constructor. */
 	public Literal(String name, boolean negated){
 	    this.name = name;
 	    this.negated = negated;
 	}
 	
-	/**
-	 * Constructor de copia.
-	 */
+	/** Constructor de copia. */
 	public Literal(Literal other){
 	    this(other.name, other.negated);
 	}
