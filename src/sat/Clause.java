@@ -3,24 +3,29 @@ package sat;
 import java.util.ArrayList;
 
 public class Clause {
-	private ArrayList<Literals> literalsSet;
+	private ArrayList<Literal> literalsSet;
+	
+	/** CONSTRUCTOR */
+	public Clause() {
+		this.literalsSet = new ArrayList<Literal>();
+	}
 	
 	/** METHODS */
 	public String toString () {
 		String str = "(";
-		for (int i = 0; i < literalsSet.size() -1; i++) {
-			str += literalsSet.get(i).toString() + " v ";
+		for (int i = 0; i < literalsSet.size(); i++) {
+			str += literalsSet.get(i).toString();
+			if (i != this.literalsSet.size()-1) { str += " v "; }
 		}
-		str += literalsSet.get(literalsSet.size()).toString() + ")";
-		return str;
+		return (str + ")");
 	}
 	
 	/** GETTERS and SETTERS */
-	public ArrayList<Literals> getLiteralsSet() {
+	public ArrayList<Literal> getLiteralsSet() {
 		return literalsSet;
 	}
 
-	public void setLiteralsSet(ArrayList<Literals> literalsSet) {
+	public void setLiteralsSet(ArrayList<Literal> literalsSet) {
 		this.literalsSet = literalsSet;
 	}
 	

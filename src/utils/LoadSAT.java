@@ -1,57 +1,69 @@
 package utils;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import sat.Clause;
 import sat.Instance;
+import sat.Literal;
 
 public class LoadSAT {
 
-	/** MÉTODOS */
-	public static void LoadSATofFile(String archivo,Instance instance) throws FileNotFoundException, IOException {
+	/** METHODS */
+	public String nameFile (int number) {
+		String path = "/src/examples/"; 
+		
+		File folder = new File(path);
+		File[] listOfFiles = folder.listFiles(); 
+		System.out.println(listOfFiles.length);
+		
+		return "src/examples/" + listOfFiles[number].getName();
+	}
+	
+	public static void LoadSATofFile(String path,Instance instance) throws FileNotFoundException, IOException {
         String cadena;
-        FileReader fileReader = new FileReader(archivo);		
+        System.out.println(path);
+        FileReader fileReader = new FileReader(path);		
         BufferedReader bufferedReader = new BufferedReader(fileReader);
         
-    	// SALTAMOS COMENTARIOS INICIALES
-    	cadena = bufferedReader.readLine();
-    	while (cadena.charAt(0)=='#'){	// Si la cadena[0] contiene '#':
-    		cadena = bufferedReader.readLine();		// Salto de linea
-    	}
+    	ArrayList<Literal> literals = new ArrayList<Literal>();
+    	ArrayList<Clause> clauses = new ArrayList<Clause>();
     	
-    	// LINE 1: literals
-    	String [] literalsSet = cadena.split(" ");		// Partimos cadena
-	    
-	    
-	    // LINEA 7 Y SIGUIENTES: Delta (Transiciones)
-	    while ((cadena = bufferedReader.readLine()) != null)   {
-	    	
-	    	partirCadena = cadena.split("#");
-	    	partirCadena[0]= partirCadena[0].trim();
-	    	String [] transicion = partirCadena[0].split(" ");
-	    	
-	    	// metemos en cada estado ya cargado su transicion
-	    	if (maquinaTuring.posicionEstado(transicion[0]) != -1) {
-	    		
-	    		// Conseguimos el estado asociado 
-	    		Estado estadoP = maquinaTuring.getEstado(maquinaTuring.posicionEstado(transicion[0]));
-	    		
-	    		// Creamos la transicion a añadir
-	    		Transicion transP = new Transicion( transicion[1] + ";" 
-	    											+ transicion[3] + ";" 
-													+ transicion[4], 
-													transicion[2]);
-	    		
-	    		// Añadimos la transicion al estado
-	    		estadoP.agregarTransicion(transP);
-	    		
-	    	}
-		    
-	    }	
-	    
+    	boolean C = false;
+    	cadena = bufferedReader.readLine();
+    	while ((cadena = bufferedReader.readLine()) != null) {
+    		if (cadena.charAt(0) == '#') {
+				cadena = bufferedReader.readLine();
+				C = true;
+    		}
+    		if (C) {	// CLAUSULAS
+    			String [] str = cadena.split(" ");
+    			ArrayList<Literal> literalsTemp = new ArrayList<Literal>();
+    			for (int i = 0; i < str.length; i++) {
+    				if (str[i].contains("¬"))
+    					literalsTemp.add(new Literal(str[i].replace("¬", ""),false));
+    				else
+    					literalsTemp.add(new Literal(str[i].replace("¬", ""),true));
+				}
+    			Clause Ci = new Clause();
+    			Ci.setLiteralsSet(literalsTemp);
+    			clauses.add(Ci);
+    		} else {	// LITERALES
+	    		String [] str = cadena.split(" ");
+		    	if (str[1] == "T") {
+		    		literals.add(new Literal(str[0],true));
+		    	} else {
+		    		literals.add(new Literal(str[0],false));
+		    	}
+    		}
+    	}
+    	instance.setLiteral(literals);
+    	instance.setClauses(clauses);
+    	
         bufferedReader.close();
     }
 }

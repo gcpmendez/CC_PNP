@@ -1,0 +1,9 @@
+# Literales o variables
+u1 T 
+u2 T 
+u3 F
+# Clausulas
+u1 ¬u2
+u1 u3
+u2 ¬u3
+¬u1 u3

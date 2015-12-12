@@ -1,12 +1,18 @@
 package sat;
 
-public class Literals {
+public class Literal {
 	private String literal;
 	private boolean negate;
 	
+	/** CONSTRUCTOR */
+	public Literal (String literal, boolean negate) {
+		this.literal = literal;
+		this.negate = negate;
+	}
+	
 	/** METHODS */
 	public String toString () {
-		if ( this.negate == true ) {
+		if ( this.negate == false ) {
 			return ("¬" + literal);
 		} else {
 			return literal;
