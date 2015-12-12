@@ -8,10 +8,9 @@ import sat.utils.Loader;
 
 public class Main {
 	public static void main(String[] args) throws FileNotFoundException, IOException {
-		// Creamos una instancia a cargar
-		Instance inst = new Instance();
-		// Cargamos SAT
-		Loader.LoadSATofFile("src/examples/SAT1example.txt", inst);
+
+		// Cargamos Instancia SAT de un archivo.
+		Instance inst = Loader.LoadInstanceFromFile("src/examples/SAT1example.txt");
 		// Imprimimos instancia
     	System.out.println(inst.toString());
 		// Satisfactible?
