@@ -38,32 +38,6 @@ public class Config {
         this.rawValues = rawValues;
     }
     
-    
-    /** Devuelve una version incrementada de si misma */
-    public Config returnSelfIncrement() throws Exception{
-        ArrayList<Boolean> newRawValues = this.rawValues;
-        int i = newRawValues.size()-1;  // Nos ponemos al final.
-        
-        // Vamos de derecha a izquierda (<<--).
-        while(i >= 0){
-            // Ignoramos los 1s, pero paramos si encontramos un 0.
-            if(newRawValues.get(i) == false) break;
-            i--;
-        }
-        
-        // Nos quedamos en el primer 0 desde la derecha. Lo cambiamos a 1.
-        newRawValues.set(i, true);
-        
-        // Vamos de izquierda a derecha (-->>).
-        while (i < newRawValues.size()){
-            // Convertimos a 0s todos los 1s que antes ignoramos.
-            newRawValues.set(i, false);
-            i++;
-        }
-        
-        return new Config(this.literalNames, newRawValues);
-    }
-    
     /*
      * Getters y setters.
      * Solo existen getters y setters conjuntos para evitar disparidad de datos.
@@ -71,13 +45,5 @@ public class Config {
     
     public Boolean getValue(String literalName){
         return rawValues.get(literalNames.indexOf(literalName));
-    }
-    
-    /*
-     * Getters y setters.
-     */
-
-    public ArrayList<Boolean> getRawValues() {
-        return rawValues;
     }
 }
