@@ -16,7 +16,7 @@ public class Main {
         // Imprimimos instancia
         Sys.out(inst);
         // Satisfactible?
-        Sys.out(Solver.solve(inst));
+        Solver.solve(inst);
         
         // transform to 3sat
     }

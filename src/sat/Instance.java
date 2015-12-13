@@ -4,12 +4,12 @@ import java.util.ArrayList;
 
 public class Instance {
     private ArrayList<Clause> clauses;
-    private ArrayList<Literal> literals;
+    private ArrayList<String> literalNames;
     
     /** CONSTRUCTOR */
     public Instance() {
     	this.clauses = new ArrayList<Clause>();
-    	this.literals = new ArrayList<Literal>();
+    	this.literalNames = new ArrayList<String>();
     }
     
     /** METHODS */
@@ -17,8 +17,8 @@ public class Instance {
     	// Literales
     	String U = "U = {";
     	String delim = "";
-    	for (Literal i: literals) {
-			U += delim + i.toString();
+    	for (String s : literalNames) {
+			U += delim + s;
 			delim = ", "; 
 		}
     	U += "}";
@@ -41,11 +41,11 @@ public class Instance {
 	public void setClauses(ArrayList<Clause> clauses) {
 		this.clauses = clauses;
 	}
-	public ArrayList<Literal> getLiterals() {
-		return literals;
+	public ArrayList<String> getLiterals() {
+		return literalNames;
 	}
-	public void setLiterals(ArrayList<Literal> literal) {
-		this.literals = literal;
+	public void setLiterals(ArrayList<String> literal) {
+		this.literalNames = literal;
 	}
     
 

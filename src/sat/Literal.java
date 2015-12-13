@@ -18,7 +18,7 @@ public class Literal {
 	@Override
 	public String toString () {
 		String str = "";
-		if ( this.negated == false ) {
+		if ( this.negated ) {
 			str += "!" + name;
 		} else {
 			str += name;

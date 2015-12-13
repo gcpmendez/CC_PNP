@@ -31,7 +31,7 @@ public abstract class Loader {
         FileReader fileReader = new FileReader(path);       
         BufferedReader bufferedReader = new BufferedReader(fileReader);
         
-        ArrayList<Literal> literals = new ArrayList<Literal>();
+        ArrayList<String> literalNames = new ArrayList<String>();
         ArrayList<Clause> clauses = new ArrayList<Clause>();
         
         boolean C = false;
@@ -45,24 +45,21 @@ public abstract class Loader {
                 String [] str = cadena.split(" ");
                 ArrayList<Literal> literalsTemp = new ArrayList<Literal>();
                 for (int i = 0; i < str.length; i++) {
-                    if (str[i].contains("!"))
-                        literalsTemp.add(new Literal(str[i].replace("!", ""),false));
+                    if (str[i].contains("!")){
+                        str[i] = str[i].replace("!", ""); // Quitamos el ! del nombre.
+                        literalsTemp.add(new Literal(str[i],true)); // Nuevo literal que SI esta negado (negated=true).
+                    }
                     else
-                        literalsTemp.add(new Literal(str[i].replace("!", ""),true));
+                        literalsTemp.add(new Literal(str[i],false)); // Nuevo literal que NO esta negado (negated=false).
                 }
                 Clause Ci = new Clause();
                 Ci.setLiteralsSet(literalsTemp);
                 clauses.add(Ci);
             } else {    // LITERALES
-                String [] str = cadena.split(" ");
-                if (str[1].equals("T")) {
-                    literals.add(new Literal(str[0],true));
-                } else {
-                    literals.add(new Literal(str[0],false));
-                }
+                literalNames.add(cadena);
             }
         }
-        instance.setLiterals(literals);
+        instance.setLiterals(literalNames);
         instance.setClauses(clauses);
         
         bufferedReader.close();

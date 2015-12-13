@@ -97,12 +97,14 @@ public class Config implements Iterator<Config>{
      */
     
     public String toString(){
-        String str = "";
+        String str = "[";
         for (int i = 0; i < literalNames.size(); i++){
             if(i > 0) str += ", ";
-            str += String.format("%s:%s", literalNames.get(i), rawValues.get(i));
-            
+            String rawValue = rawValues.get(i).toString();
+            rawValue = rawValues.get(i) ? "1" : "0";    // Comentar si se quiere true/false en vez de 1/0.
+            str += String.format("%s=%s", literalNames.get(i), rawValue);   
         }
+        str += "]";
         return str;
     }
     
