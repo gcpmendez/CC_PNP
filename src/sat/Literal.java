@@ -1,11 +1,8 @@
 package sat;
 
 public class Literal {
-    // Nombre del literal.
-	private String name;
-	
-	// Si el literal esta negado o no.
-	private boolean negated;
+	private String name;		// Literal name
+	private boolean negated;	// negated?
 	
 	/** Constructor. */
 	public Literal(String name, boolean negated){
@@ -18,20 +15,18 @@ public class Literal {
 	    this(other.name, other.negated);
 	}
 	
+	@Override
 	public String toString () {
 		String str = "";
-		if ( this.negated == true ) {
-			str += "�" + name;
+		if ( this.negated == false ) {
+			str += "!" + name;
 		} else {
 			str += name;
 		}
 		return str;
 	}
-	
-	/*
-	 * Getters and setters.
-	 */
 
+	/** GETTERS and SETTERS*/
     public boolean isNegated() {
         return negated;
     }

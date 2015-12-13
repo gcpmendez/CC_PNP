@@ -9,15 +9,16 @@ import sat.utils.Solver;
 import utils.Sys;
 
 public class Main {
-	public static void main(String[] args) throws FileNotFoundException, IOException {
+    public static void main(String[] args) throws FileNotFoundException, IOException {
 
-		// Cargamos Instancia SAT de un archivo.
-		Instance inst = Loader.LoadInstanceFromFile("examples/SAT1example.txt");
-		// Imprimimos instancia
-    	Sys.out(inst);
-		// Satisfactible?
-    	Sys.out(Solver.solve(inst));
-    	// inst.solve();
-	}
-	
+        // Cargamos Instancia SAT de un archivo.
+        Instance inst = Loader.LoadInstanceFromFile("examples/SAT1example.txt");
+        // Imprimimos instancia
+        Sys.out(inst);
+        // Satisfactible?
+        Sys.out(Solver.solve(inst));
+        
+        // transform to 3sat
+    }
+    
 }
