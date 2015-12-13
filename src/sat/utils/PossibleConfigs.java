@@ -10,12 +10,12 @@ import java.util.Iterator;
 public class PossibleConfigs implements Iterable<Config> {
     
     // Configuracion actual del ciclo.
-    ConfigIterable currentConfig;
+    Config currentConfig;
     
     public PossibleConfigs(ArrayList<String> literalNames){
         
         // Construimos la configuracion inicial: todos los literales a false.
-        currentConfig = new ConfigIterable(literalNames);
+        currentConfig = new Config(literalNames);
     }
 
     @Override

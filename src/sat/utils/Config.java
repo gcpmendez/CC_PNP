@@ -1,8 +1,8 @@
 package sat.utils;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
-import sat.Literal;
 import utils.Sys;
 
 /**
@@ -14,7 +14,7 @@ import utils.Sys;
  * No puede ser solo un ArrayList<Literal> o ArrayList<Boolean>
  * porque necesitamos poder pasarle un literal y que devuelva un booleano.
  */
-public class Config {
+public class Config implements Iterator<Config>{
     
     ArrayList<String> literalNames;
     ArrayList<Boolean> rawValues;
@@ -36,6 +36,52 @@ public class Config {
             Sys.exception("Distinto numero de literales (%d) y raw values (%d)!", literals.size(), rawValues.size());
         this.literalNames = literals;
         this.rawValues = rawValues;
+    }
+    
+    @Override
+    public boolean hasNext() {
+        // Si algun literal esta a false, se podra incrementar la configuracion
+        // y por tanto existiran mas posibilidades (elementos).
+        for (Boolean b : rawValues){
+            if (b == false) return true;
+        }
+        // Todos los valores a true == 11111... == no hay mas posibilidades (elementos)! 
+        return false;
+    }
+
+    @Override
+    public Config next() {
+        try {
+            return returnSelfIncrement();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /** Devuelve una version incrementada de si misma */
+    private Config returnSelfIncrement() throws Exception{
+        ArrayList<Boolean> newRawValues = this.rawValues;
+        int i = newRawValues.size()-1;  // Nos ponemos al final.
+        
+        // Vamos de derecha a izquierda (<<--).
+        while(i >= 0){
+            // Ignoramos los 1s, pero paramos si encontramos un 0.
+            if(newRawValues.get(i) == false) break;
+            i--;
+        }
+        
+        // Nos quedamos en el primer 0 desde la derecha. Lo cambiamos a 1.
+        newRawValues.set(i, true);
+        
+        // Vamos de izquierda a derecha (-->>).
+        while (i < newRawValues.size()){
+            // Convertimos a 0s todos los 1s que antes ignoramos.
+            newRawValues.set(i, false);
+            i++;
+        }
+        
+        return new Config(this.literalNames, newRawValues);
     }
     
     /*
