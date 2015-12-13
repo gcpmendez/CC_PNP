@@ -6,6 +6,7 @@ import java.util.HashMap;
 import sat.Clause;
 import sat.Instance;
 import sat.Literal;
+import utils.Sys;
 
 public abstract class Solver {
     
@@ -17,9 +18,9 @@ public abstract class Solver {
             literalNames.add(l.getName());
         
         PossibleConfigs possibleConfigs = new PossibleConfigs(literalNames);
-        // for (Config c : possibleConfigs){
-            
-        // }
+        for (Config c : possibleConfigs){
+            tryClauses(prob.getClauses(), c);
+        }
         return false; // Ninguna de las configuraciones devuelve true: el problema no es satisfactible.
     }
     
@@ -28,11 +29,14 @@ public abstract class Solver {
      * @param config Configuracion de valores de literales (cada literal a true o false).
      * @return Si todas las clausulas se cumplen para esta configuracion.
      */
-    static private boolean tryClauses(ArrayList<Clause> clauses, HashMap<String, Boolean> config){
+    static private boolean tryClauses(ArrayList<Clause> clauses, Config config){
         for(Clause c : clauses){
             // Con tal de que un literal sea falso, la condicion no se cumple.
             // (Esto es porque en una problema SAT todas las clausulas estan unidas mediante AND).
-            if (trySingleClause(c, config) == true) return false; 
+            if (trySingleClause(c, config) == true){
+                Sys.fout("%s", config);
+                return false; 
+            }
         }
         return true; // Todas las clausulas devuelven true: la configuracion satisface el problema.
     }
@@ -42,7 +46,7 @@ public abstract class Solver {
      * @param config Configuracion de valores de literales (cada literal a true o false).
      * @return Si todas las clausulas se cumplen para esta configuracion.
      */
-    static private boolean trySingleClause(Clause clause, HashMap<String, Boolean> config){
+    static private boolean trySingleClause(Clause clause, Config config){
         for(Literal l : clause.getLiteralsSet()){
             // Con tal de que un literal sea verdadero, la clausula se cumple.
             // (Esto es porque en una clausula todos los literales estan unidos mediante OR).
@@ -52,9 +56,9 @@ public abstract class Solver {
     }
     
     /** Obtener el valor real del literal, sabiendo la configuracion actual y si esta negado o no. */
-    static private boolean getLiteralValue(Literal literal, HashMap<String, Boolean> config){
+    static private boolean getLiteralValue(Literal literal, Config config){
         // Obtenemos el valor real del literal de la tabla de valores (tambien llamada configuracion).
-        boolean rawValue = config.get(literal.getName());
+        boolean rawValue = config.getValue(literal.getName());
         
         // Según esté negado o no, daremos el valor invertido o el real.
         if (literal.isNegated()){

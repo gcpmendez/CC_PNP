@@ -19,6 +19,10 @@ public class Config implements Iterator<Config>{
     ArrayList<String> literalNames;
     ArrayList<Boolean> rawValues;
     
+    /*
+     * CONSTRUCTORES
+     */
+    
     /** Constructor */
     public Config(ArrayList<String> literalNames){
         this.literalNames = literalNames;
@@ -37,6 +41,10 @@ public class Config implements Iterator<Config>{
         this.literalNames = literals;
         this.rawValues = rawValues;
     }
+    
+    /*
+     * METODOS DE ITERABLE
+     */
     
     @Override
     public boolean hasNext() {
@@ -85,7 +93,21 @@ public class Config implements Iterator<Config>{
     }
     
     /*
-     * Getters y setters.
+     * METODOS OBJECT
+     */
+    
+    public String toString(){
+        String str = "";
+        for (int i = 0; i < literalNames.size(); i++){
+            if(i > 0) str += ", ";
+            str += String.format("%s:%s", literalNames.get(i), rawValues.get(i));
+            
+        }
+        return str;
+    }
+    
+    /*
+     * GETTERS Y SETTERS.
      * Solo existen getters y setters conjuntos para evitar disparidad de datos.
      */
     
