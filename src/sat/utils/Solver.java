@@ -12,7 +12,14 @@ public abstract class Solver {
     static public boolean solve(Instance prob){
         // Construimos tabla de valores a probar
         
-        //for
+        ArrayList<String> literalNames = new ArrayList<String>();
+        for(Literal l : prob.getLiterals())
+            literalNames.add(l.getName());
+        
+        PossibleConfigs possibleConfigs = new PossibleConfigs(literalNames);
+        // for (Config c : possibleConfigs){
+            
+        // }
         return false; // Ninguna de las configuraciones devuelve true: el problema no es satisfactible.
     }
     

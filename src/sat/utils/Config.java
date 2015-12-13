@@ -16,16 +16,16 @@ import utils.Sys;
  */
 public class Config {
     
-    ArrayList<String> literals;
+    ArrayList<String> literalNames;
     ArrayList<Boolean> rawValues;
     
     /** Constructor */
-    public Config(ArrayList<String> literals){
-        this.literals = literals;
+    public Config(ArrayList<String> literalNames){
+        this.literalNames = literalNames;
         this.rawValues = new ArrayList<Boolean>();
         
         // A cada String, asignamos el valor false.
-        for (String str : literals)
+        for (String str : literalNames)
             rawValues.add(false);
     }
     
@@ -34,7 +34,7 @@ public class Config {
     public Config(ArrayList<String> literals, ArrayList<Boolean> rawValues) throws Exception{
         if (literals.size() != rawValues.size()) 
             Sys.exception("Distinto numero de literales (%d) y raw values (%d)!", literals.size(), rawValues.size());
-        this.literals = literals;
+        this.literalNames = literals;
         this.rawValues = rawValues;
     }
     
@@ -61,7 +61,7 @@ public class Config {
             i++;
         }
         
-        return new Config(this.literals, newRawValues);
+        return new Config(this.literalNames, newRawValues);
     }
     
     /*
@@ -70,6 +70,14 @@ public class Config {
      */
     
     public Boolean getValue(String literalName){
-        return rawValues.get(literals.indexOf(literalName));
+        return rawValues.get(literalNames.indexOf(literalName));
+    }
+    
+    /*
+     * Getters y setters.
+     */
+
+    public ArrayList<Boolean> getRawValues() {
+        return rawValues;
     }
 }
