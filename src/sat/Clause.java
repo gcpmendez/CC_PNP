@@ -12,12 +12,12 @@ public class Clause {
 	
 	/** METHODS */
 	public String toString () {
-		String str = "(";
+		String str = "{";
 		for (int i = 0; i < literalsSet.size(); i++) {
 			str += literalsSet.get(i).toString();
-			if (i != this.literalsSet.size()-1) { str += " v "; }
+			if (i != this.literalsSet.size()-1) { str += ", "; }
 		}
-		return (str + ")");
+		return (str + "}");
 	}
 	
 	/** GETTERS and SETTERS */

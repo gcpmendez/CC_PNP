@@ -22,7 +22,7 @@ public class Instance {
 		}
     	U += "}";
     	
-    	// Cla�sulas
+    	// Clauses
     	String C = "C = {";
     	for (int i = 0; i < this.clauses.size(); i++) {
     		C += this.clauses.get(i).toString();

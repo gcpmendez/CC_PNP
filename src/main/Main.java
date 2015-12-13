@@ -10,7 +10,7 @@ public class Main {
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 
 		// Cargamos Instancia SAT de un archivo.
-		Instance inst = Loader.LoadInstanceFromFile("src/examples/SAT1example.txt");
+		Instance inst = Loader.LoadInstanceFromFile("examples/SAT1example.txt");
 		// Imprimimos instancia
     	System.out.println(inst.toString());
 		// Satisfactible?

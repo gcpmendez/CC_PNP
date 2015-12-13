@@ -15,13 +15,13 @@ public abstract class Loader {
 
     /** METHODS */
     public static String nameFile (int number) {
-        String path = "/src/examples/"; 
+        String path = "examples/"; 
         
         File folder = new File(path);
         File[] listOfFiles = folder.listFiles(); 
         System.out.println(listOfFiles.length);
         
-        return "src/examples/" + listOfFiles[number].getName();
+        return "examples/" + listOfFiles[number].getName();
     }
     
     public static Instance LoadInstanceFromFile(String path) throws FileNotFoundException, IOException {
@@ -45,10 +45,10 @@ public abstract class Loader {
                 String [] str = cadena.split(" ");
                 ArrayList<Literal> literalsTemp = new ArrayList<Literal>();
                 for (int i = 0; i < str.length; i++) {
-                    if (str[i].contains("¬"))
-                        literalsTemp.add(new Literal(str[i].replace("¬", ""),false));
+                    if (str[i].contains("!"))
+                        literalsTemp.add(new Literal(str[i].replace("!", ""),false));
                     else
-                        literalsTemp.add(new Literal(str[i].replace("¬", ""),true));
+                        literalsTemp.add(new Literal(str[i].replace("!", ""),true));
                 }
                 Clause Ci = new Clause();
                 Ci.setLiteralsSet(literalsTemp);

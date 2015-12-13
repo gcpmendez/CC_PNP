@@ -21,7 +21,7 @@ public class Literal {
 	public String toString () {
 		String str = "";
 		if ( this.negated == true ) {
-			str += "�" + name;
+			str += "!" + name;
 		} else {
 			str += name;
 		}
