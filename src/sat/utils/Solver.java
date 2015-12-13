@@ -84,7 +84,6 @@ public abstract class Solver {
     static private boolean getLiteralValue(Literal literal, Config config){
         // Obtenemos el valor real del literal de la tabla de valores (tambien llamada configuracion).
         boolean rawValue = config.getValue(literal.getName());
-        System.out.println(literal.isNegated());
         
         // Según esté negado o no, daremos el valor invertido o el real.
         if (literal.isNegated()){

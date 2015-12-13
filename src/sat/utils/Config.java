@@ -60,7 +60,7 @@ public class Config implements Iterator<Config>{
     @Override
     public Config next() {
         try {
-            return returnSelfIncrement();
+            return this.returnSelfIncrement();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -69,10 +69,12 @@ public class Config implements Iterator<Config>{
 
     /** Devuelve una version incrementada de si misma */
     private Config returnSelfIncrement() throws Exception{
+        // Hacemos una copia de los valores raw, que usaremos.
         ArrayList<Boolean> newRawValues = this.rawValues;
-        int i = newRawValues.size()-1;  // Nos ponemos al final.
+        // Nos ponemos al final.
+        int i = newRawValues.size()-1;
         
-        // Vamos de derecha a izquierda (<<--).
+        // Primero, vamos de derecha a izquierda (<<--).
         while(i >= 0){
             // Ignoramos los 1s, pero paramos si encontramos un 0.
             if(newRawValues.get(i) == false) break;
@@ -81,8 +83,9 @@ public class Config implements Iterator<Config>{
         
         // Nos quedamos en el primer 0 desde la derecha. Lo cambiamos a 1.
         newRawValues.set(i, true);
+        i++; // Y nos movemos a la derecha.
         
-        // Vamos de izquierda a derecha (-->>).
+        // Ahora, vamos de izquierda a derecha (-->>).
         while (i < newRawValues.size()){
             // Convertimos a 0s todos los 1s que antes ignoramos.
             newRawValues.set(i, false);
