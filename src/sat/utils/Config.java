@@ -26,11 +26,12 @@ public class Config implements Iterator<Config>{
     /** Constructor */
     public Config(ArrayList<String> literalNames){
         this.literalNames = literalNames;
-        this.rawValues = new ArrayList<Boolean>();
+        //this.rawValues = new ArrayList<Boolean>();
+        this.rawValues = null;
         
         // A cada String, asignamos el valor false.
-        for (String str : literalNames)
-            rawValues.add(false);
+        //for (String str : literalNames)
+        //    rawValues.add(false);
     }
     
     /** Constructor 
@@ -48,6 +49,8 @@ public class Config implements Iterator<Config>{
     
     @Override
     public boolean hasNext() {
+        // Caso especial: La config actual acaba de ser creada y es null.
+        if (this.rawValues == null) return true;
         // Si algun literal esta a false, se podra incrementar la configuracion
         // y por tanto existiran mas posibilidades (elementos).
         for (Boolean b : rawValues){
@@ -69,6 +72,15 @@ public class Config implements Iterator<Config>{
 
     /** Devuelve una version incrementada de si misma */
     private Config returnSelfIncrement() throws Exception{
+        // Caso especial: La config actual acaba de ser creada y es null.
+        // Creamos la verdadera configuracion inicial, con valores a 0.
+        if (this.rawValues == null){
+          this.rawValues = new ArrayList<Boolean>();
+          for (String str : literalNames)
+              rawValues.add(false);
+          return this;
+        }
+        
         // Hacemos una copia de los valores raw, que usaremos.
         ArrayList<Boolean> newRawValues = this.rawValues;
         // Nos ponemos al final.
@@ -105,7 +117,7 @@ public class Config implements Iterator<Config>{
             if(i > 0) str += ", ";
             String rawValue = rawValues.get(i).toString();
             rawValue = rawValues.get(i) ? "1" : "0";    // Comentar si se quiere true/false en vez de 1/0.
-            str += String.format("%s=%s", literalNames.get(i), rawValue);   
+            str += String.format("%s= %s", literalNames.get(i), rawValue);   
         }
         str += "]";
         return str;
