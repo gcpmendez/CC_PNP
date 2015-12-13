@@ -16,17 +16,19 @@ public class Instance {
     public String toString() {
     	// Literales
     	String U = "U = {";
-    	for (int i = 0; i < this.literals.size(); i++) {
-			U += this.literals.get(i);
-			if (i != this.literals.size()-1) { U += ", "; }
+    	String delim = "";
+    	for (Literal i: literals) {
+			U += delim + i.toString();
+			delim = ", "; 
 		}
     	U += "}";
     	
     	// Clauses
     	String C = "C = {";
-    	for (int i = 0; i < this.clauses.size(); i++) {
-    		C += this.clauses.get(i).toString();
-    		if (i != this.clauses.size()-1) { C += ", "; }
+    	delim = "";
+    	for (Clause i: clauses) {
+    		C += delim + i.toString();
+    		delim = ", "; 
 		}
     	C += "}";
     	return (U + "\n" + C);

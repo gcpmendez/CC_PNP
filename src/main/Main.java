@@ -14,6 +14,8 @@ public class Main {
 		Instance inst = Loader.LoadInstanceFromFile("examples/SAT1example.txt");
 		// Imprimimos instancia
     	System.out.println(inst.toString());
+    	// transform to 3sat
+    	
 		// Satisfactible?
     	Solver.solve(inst);
     	// inst.solve();

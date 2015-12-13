@@ -11,11 +11,13 @@ public class Clause {
 	}
 	
 	/** METHODS */
+	@Override
 	public String toString () {
 		String str = "{";
-		for (int i = 0; i < literalsSet.size(); i++) {
-			str += literalsSet.get(i).toString();
-			if (i != this.literalsSet.size()-1) { str += ", "; }
+		String delim = "";
+		for (Literal i: literalsSet) {
+			str += delim + i.toString();
+		    delim = ",";
 		}
 		return (str + "}");
 	}

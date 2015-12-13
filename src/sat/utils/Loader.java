@@ -55,7 +55,7 @@ public abstract class Loader {
                 clauses.add(Ci);
             } else {    // LITERALES
                 String [] str = cadena.split(" ");
-                if (str[1] == "T") {
+                if (str[1].equals("T")) {
                     literals.add(new Literal(str[0],true));
                 } else {
                     literals.add(new Literal(str[0],false));
