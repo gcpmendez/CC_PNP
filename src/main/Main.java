@@ -1,3 +1,17 @@
+ /** 
+  *  Asignatura: Complejidad Computacional
+  *  Universidad de La Laguna.
+  *  Curso: 2015-2016
+  *  
+  *  
+  *  Autores: 
+  * 	Germán Paz Méndez
+  * 		Contacto: alu0100503647@edu.ull.es
+  * 	Víctor Hernández Perez
+  * 		Contacto: alu0100697032@edu.ull.es
+  * 	Jose Manuel Hernández Hernández
+  * 		Contacto: alu0100775846@edu.ull.es
+  */
 package main;
 
 import java.io.FileNotFoundException;
@@ -15,7 +29,7 @@ public class Main {
 
 		// Cargamos Instancia SAT de un archivo.
 		System.out.println("----- Fichero de carga -----");
-		InstanceSAT inst = Loader.LoadInstanceFromFile("examples/SAT1example.txt");
+		InstanceSAT inst = Loader.LoadInstanceFromFile("examples/To3SATcase4b.txt");
 		// Imprimimos instancia
 		System.out.println("\n----- Instancia SAT -----");
 		Sys.out(inst);
