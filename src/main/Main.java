@@ -5,8 +5,8 @@ import java.io.IOException;
 
 import objects.Instance3SAT;
 import objects.InstanceSAT;
-import solvers.Solver;
-import transforms.To3SAT;
+import solver.Solver;
+import transform.To3SAT;
 import utils.Loader;
 import utils.Sys;
 

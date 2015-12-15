@@ -1,4 +1,4 @@
-package transforms;
+package transform;
 
 import java.util.Iterator;
 import objects.Clause;
