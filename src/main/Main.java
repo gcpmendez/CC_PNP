@@ -16,17 +16,26 @@ public class Main {
 		// Cargamos Instancia SAT de un archivo.
 		System.out.println("----- Fichero de carga -----");
 		InstanceSAT inst = Loader.LoadInstanceFromFile("examples/SAT1example.txt");
-		// Imprimimos instancia
+		
+		// Imprimimos instancia SAT
 		System.out.println("\n----- Instancia SAT -----");
 		Sys.out(inst);
-		// Satisfactible?
-		System.out.println("\n----- ¿ Satisfacibilidad ? -----");
+		
+		// SAT Satisfactible?
+		System.out.println("\n----- ï¿½ Satisfacibilidad ? -----");
 		Solver.solve(inst);
+		
 		// transform to 3sat
 		System.out.println("\n----- SAT to 3SAT -----");
-		Instance3SAT inst3 = new Instance3SAT(null);
-		inst3 = To3SAT.to3SAT(inst);
-		System.out.println(inst3.toString());
+		Instance3SAT inst3 = To3SAT.to3SAT(inst);
+		
+		// Imprimimos instancia 3SAT
+        System.out.println("\n----- Instancia 3SAT -----");
+        Sys.out(inst);
+		
+		// 3SAT Satisfactible?
+        System.out.println("\n----- ï¿½ Satisfacibilidad ? -----");
+        Solver.solve(inst3);
 	}
 
 }
