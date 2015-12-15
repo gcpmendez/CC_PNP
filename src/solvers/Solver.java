@@ -1,16 +1,16 @@
-package sat.utils;
+package solvers;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import sat.Clause;
-import sat.Instance;
-import sat.Literal;
+import objects.Clause;
+import objects.Literal;
+import objects.InstanceSAT;
 import utils.Sys;
 
 public abstract class Solver {
     
-    static public boolean solve(Instance prob){
+    static public boolean solve(InstanceSAT prob){
         // Construimos tabla de valores a probar
         
         ArrayList<String> literalNames = new ArrayList<String>();
@@ -23,10 +23,10 @@ public abstract class Solver {
             // (Esto es porque en una problema SAT sólo se necesita una configuración de valores válida).
             Sys.fout("Para CONFIG = %s...", c);
             if (tryClauses(prob.getClauses(), c) == true){
-                Sys.out("Satisface todas las cláusulas! El problema ES SATISFACTIBLE. (BREAK)");
+                Sys.out("Satisface todas las clausulas! El problema ES SATISFACTIBLE. (BREAK)");
                 return true;
             } else {
-                Sys.out("No satisface todas las cláusulas.");
+                Sys.out("No satisface todas las clausulas.");
             };
         }
         Sys.fout("Ninguna configuración vale! El problema NO ES SATISFACTIBLE.");
@@ -47,13 +47,13 @@ public abstract class Solver {
             // Con tal de que un literal sea falso, la condicion no se cumple.
             // (Esto es porque en una problema SAT todas las clausulas estan unidas mediante AND).
             if (trySingleClause(c, config) == false){
-                if (showLevel) Sys.out(level,"No se cumple! Esta configuración no satisface todas las cláusulas. (BREAK)");
+                if (showLevel) Sys.out(level,"No se cumple! Esta configuracion no satisface todas las clausulas. (BREAK)");
                 return false;
             } else {
                 if (showLevel) Sys.out(level,"Se cumple.");
             }
         }
-        Sys.fout("\tTodas las cláusulas se cumplen.");
+        Sys.fout("\tTodas las clausulas se cumplen.");
         return true; // Todas las clausulas devuelven true: la configuracion satisface el problema.
     }
     
@@ -66,12 +66,12 @@ public abstract class Solver {
         String level = "\t\t"; // Nivel de indentacion de chivato.
         boolean showLevel = false; // Activar o no el chivato de este nivel.
         
-        for(Literal l : clause.getLiteralsSet()){
+        for(Literal l : clause.getLiterals()){
             if (showLevel) Sys.fout("%sPara LITERAL = %s...", level, l);
             // Con tal de que un literal sea verdadero, la clausula se cumple.
             // (Esto es porque en una clausula todos los literales estan unidos mediante OR).
             if (getLiteralValue(l, config) == true){
-                if (showLevel) Sys.out(level,"Da TRUE! Se satisface la cláusula. (BREAK)");
+                if (showLevel) Sys.out(level,"Da TRUE! Se satisface la clausula. (BREAK)");
                 return true; 
             } else {
                 if (showLevel) Sys.out(level,"Da FALSE.");

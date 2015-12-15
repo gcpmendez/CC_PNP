@@ -1,4 +1,4 @@
-package sat.utils;
+package utils;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -7,26 +7,16 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import sat.Clause;
-import sat.Instance;
-import sat.Literal;
+import objects.Clause;
+import objects.Literal;
+import objects.InstanceSAT;
 
 public abstract class Loader {
 
     /** METHODS */
-    public static String nameFile (int number) {
-        String path = "examples/"; 
-        
-        File folder = new File(path);
-        File[] listOfFiles = folder.listFiles(); 
-        System.out.println(listOfFiles.length);
-        
-        return "examples/" + listOfFiles[number].getName();
-    }
-    
-    public static Instance LoadInstanceFromFile(String path) throws FileNotFoundException, IOException {
+    public static InstanceSAT LoadInstanceFromFile(String path) throws FileNotFoundException, IOException {
         String cadena;
-        Instance instance = new Instance();
+        InstanceSAT instance = new InstanceSAT();
         System.out.println(path);
         FileReader fileReader = new FileReader(path);       
         BufferedReader bufferedReader = new BufferedReader(fileReader);
@@ -53,7 +43,7 @@ public abstract class Loader {
                         literalsTemp.add(new Literal(str[i],false)); // Nuevo literal que NO esta negado (negated=false).
                 }
                 Clause Ci = new Clause();
-                Ci.setLiteralsSet(literalsTemp);
+                Ci.setLiterals(literalsTemp);
                 clauses.add(Ci);
             } else {    // LITERALES
                 literalNames.add(cadena);

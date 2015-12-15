@@ -1,4 +1,7 @@
 /main/
 /sat/
+/instances/
+/solvers/
 /utils/
-/threesat/
+/transforms/
+/objects/

@@ -1,4 +1,4 @@
-package sat;
+package objects;
 
 public class Literal {
 	private String name;		// Literal name
@@ -15,6 +15,7 @@ public class Literal {
 	    this(other.name, other.negated);
 	}
 	
+	
 	@Override
 	public String toString () {
 		String str = "";
@@ -26,6 +27,8 @@ public class Literal {
 		return str;
 	}
 
+
+	   
 	/** GETTERS and SETTERS*/
     public boolean isNegated() {
         return negated;

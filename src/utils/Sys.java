@@ -1,7 +1,6 @@
 package utils;
 
 public abstract class Sys {
-    
     /**
      * Wrapper function for System.out.print(). Prints each passed object on same line.
      * Note: there will be no added separators between objects.

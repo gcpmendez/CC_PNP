@@ -1,4 +1,4 @@
-package sat.utils;
+package solvers;
 
 import java.util.ArrayList;
 import java.util.Iterator;

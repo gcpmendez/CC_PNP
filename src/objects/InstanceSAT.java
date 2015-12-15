@@ -1,23 +1,24 @@
-package sat;
+package objects;
 
 import java.util.ArrayList;
 
-public class Instance {
+public class InstanceSAT {
     private ArrayList<Clause> clauses;
-    private ArrayList<String> literalNames;
+    private ArrayList<String> literals;
     
     /** CONSTRUCTOR */
-    public Instance() {
+    public InstanceSAT() {
     	this.clauses = new ArrayList<Clause>();
-    	this.literalNames = new ArrayList<String>();
+    	this.literals = new ArrayList<String>();
     }
     
     /** METHODS */
+    @Override
     public String toString() {
     	// Literales
     	String U = "U = {";
     	String delim = "";
-    	for (String s : literalNames) {
+    	for (String s : literals) {
 			U += delim + s;
 			delim = ", "; 
 		}
@@ -34,6 +35,14 @@ public class Instance {
     	return (U + "\n" + C);
     }
     
+    public void addClause(Clause c) {
+    	this.clauses.add(c);
+    }
+    
+    public int numVariables() {
+    	return this.literals.size();
+    }
+    
     /** GETTERS and SETTERS */
 	public ArrayList<Clause> getClauses() {
 		return clauses;
@@ -42,10 +51,10 @@ public class Instance {
 		this.clauses = clauses;
 	}
 	public ArrayList<String> getLiterals() {
-		return literalNames;
+		return literals;
 	}
 	public void setLiterals(ArrayList<String> literal) {
-		this.literalNames = literal;
+		this.literals = literal;
 	}
     
 
