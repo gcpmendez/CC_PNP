@@ -5,9 +5,12 @@ import java.util.ArrayList;
 // El 3SAT es un caso particular de SAT.
 public class Instance3SAT extends InstanceSAT {
 	private boolean valid;
-	
-	/** CONSTRUCTOR 
-	 * @param literals */
+
+	/**
+	 * CONSTRUCTOR
+	 * 
+	 * @param literals
+	 */
 	public Instance3SAT(ArrayList<String> literals) {
 		this.valid = false;
 		this.setLiterals(literals);
@@ -17,7 +20,7 @@ public class Instance3SAT extends InstanceSAT {
 	public void setValid(boolean valid) {
 		this.valid = valid;
 	}
-	
+
 	public boolean isValid() {
 		return valid;
 	}
