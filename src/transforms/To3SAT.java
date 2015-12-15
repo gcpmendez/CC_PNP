@@ -13,7 +13,7 @@ public final class To3SAT {
     private To3SAT() {}
     
     public static Instance3SAT to3SAT(InstanceSAT SAT) {
-    	Instance3SAT sat3 = new Instance3SAT();
+    	Instance3SAT sat3 = new Instance3SAT(SAT.getLiterals());
         int maxVar = SAT.getLiterals().size();
         
         // Para el conjunto de clausulas de SAT

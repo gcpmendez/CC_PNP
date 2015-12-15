@@ -1,7 +1,6 @@
 package solvers;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import objects.Clause;
 import objects.Literal;
