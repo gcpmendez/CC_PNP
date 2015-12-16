@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 import com.mxgraph.swing.mxGraphComponent;
 import com.mxgraph.view.mxGraph;
 
+// NOT IMPLEMENTED YET
 public class JGraphForVC extends JFrame {
 
 	/**

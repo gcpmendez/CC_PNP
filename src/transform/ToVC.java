@@ -17,6 +17,7 @@ package transform;
 import objects.Instance3SAT;
 import objects.InstanceVertexCover;
 
+// NOT IMPLEMENTED YET
 public class ToVC {
 	
 	/** CONSTRUCTOR */

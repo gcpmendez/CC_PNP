@@ -30,7 +30,7 @@ public class Main {
 		// Cargamos Instancia SAT de un archivo.
 		System.out.println("----- Fichero de carga -----");
 
-		InstanceSAT inst = Loader.LoadInstanceFromFile("examples/To3SATcase4b.txt");
+		InstanceSAT inst = Loader.LoadInstanceFromFile("examples/To3SATcase1.txt");
 		// Imprimimos instancia
 
 		System.out.println("\n----- Instancia SAT -----");
