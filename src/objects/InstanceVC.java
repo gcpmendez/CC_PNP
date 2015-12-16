@@ -6,6 +6,7 @@ import java.util.Map;
 
 import solver.Config;
 import solver.PossibleConfigs;
+import utils.Sys;
 
 public class InstanceVC {
 	private ArrayList<String> V;
@@ -28,8 +29,16 @@ public class InstanceVC {
 	        // Agregamos los que esten a true en esta configuracion.
 	        for (String str : this.V)
 	            if (c.getValue(str)) vertexCover.add(str);
+	        String str = "";
+	        str = "Config=" + vertexCover;
 	        // Probamos suerte: que el cover cumpla las condiciones.
-	        if (isMinimumVertexCover(vertexCover)) return true;
+	        if (isMinimumVertexCover(vertexCover)){
+	        	str += " Es cover y es minima!!";
+	        	Sys.out(str);
+	        	return true;
+	        } else if(isVertexCover(vertexCover)) str += " Es cover, pero no minima.";
+	        else str += " No es cover.";
+	        // if(isVertexCover(vertexCover)) Sys.out(str);
 	    }
 	    
 	    // Si tras probar todas las configuraciones, ninguna vale, no hay solucion.

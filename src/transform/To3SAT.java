@@ -15,7 +15,6 @@
 package transform;
 
 import java.util.Iterator;
-
 import objects.Clause;
 import objects.Instance3SAT;
 import objects.InstanceSAT;
@@ -109,7 +108,9 @@ public abstract class To3SAT {
 			copyLiteral = new Literal(lit, false);
 		}
 		copy.addLiteral(copyLiteral);
-		SAT3.addLiteral(lit);
+		if (!lit.contains("!")){
+			SAT3.addLiteral(lit);
+		}
 		SAT3.addClause(copy);
 	}
 
@@ -130,8 +131,12 @@ public abstract class To3SAT {
 			copyLiteral = new Literal(lit2, false);
 		}
 		copy.addLiteral(copyLiteral);
-		SAT3.addLiteral(lit);
-		SAT3.addLiteral(lit2);
+		if (!lit.contains("!")){
+			SAT3.addLiteral(lit);
+		}
+		if (!lit2.contains("!")){
+			SAT3.addLiteral(lit2);
+		}
 		SAT3.addClause(copy);
 	}
 
