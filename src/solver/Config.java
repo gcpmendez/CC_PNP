@@ -91,6 +91,7 @@ public class Config implements Iterator<Config> {
 	}
 
 	/** Devuelve una version incrementada de si misma */
+	@SuppressWarnings("unused")
 	private Config returnSelfIncrement() throws Exception {
 		// Caso especial: La config actual acaba de ser creada y es null.
 		// Creamos la verdadera configuracion inicial, con valores a 0.

@@ -18,7 +18,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class InstanceVertexCover {
+	@SuppressWarnings("unused")
 	private ArrayList<String> V;
+	@SuppressWarnings("unused")
 	private HashMap<String, String> E;
 
 	public InstanceVertexCover() {

@@ -19,7 +19,6 @@ public class InstanceVC {
 	}
 
 	public boolean solve(){
-	    ArrayList<String> cover = new ArrayList<String>();
 
 	    // Probamos a fuerza bruta todas las combinaciones posibles.
 	    PossibleConfigs pc = new PossibleConfigs(this.V);
