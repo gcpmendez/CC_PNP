@@ -19,6 +19,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 import objects.Clause;
 import objects.Literal;
@@ -34,7 +35,7 @@ public abstract class Loader {
 		FileReader fileReader = new FileReader(path);
 		BufferedReader bufferedReader = new BufferedReader(fileReader);
 
-		ArrayList<String> literalNames = new ArrayList<String>();
+		HashSet<String> literalNames = new HashSet<String>();
 		ArrayList<Clause> clauses = new ArrayList<Clause>();
 
 		boolean C = false;

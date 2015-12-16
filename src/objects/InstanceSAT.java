@@ -15,15 +15,16 @@
 package objects;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class InstanceSAT {
 	private ArrayList<Clause> clauses;
-	private ArrayList<String> literals;
+	private HashSet<String> literals;
 
 	/** CONSTRUCTOR */
 	public InstanceSAT() {
 		this.clauses = new ArrayList<Clause>();
-		this.literals = new ArrayList<String>();
+		this.literals = new HashSet<String>();
 	}
 
 	/** METHODS */
@@ -53,6 +54,10 @@ public class InstanceSAT {
 		this.clauses.add(c);
 	}
 
+	public void addLiteral(String l) {
+		this.literals.add(l);
+	}
+	
 	public int numVariables() {
 		return this.literals.size();
 	}
@@ -66,11 +71,11 @@ public class InstanceSAT {
 		this.clauses = clauses;
 	}
 
-	public ArrayList<String> getLiterals() {
+	public HashSet<String> getLiterals() {
 		return literals;
 	}
 
-	public void setLiterals(ArrayList<String> literal) {
+	public void setLiterals(HashSet<String> literal) {
 		this.literals = literal;
 	}
 

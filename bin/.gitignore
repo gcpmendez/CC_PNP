@@ -1,10 +1,5 @@
-<<<<<<< HEAD
+/main/
 /transform/
 /objects/
-/main/
-/utils/
 /solver/
-=======
-/main/
->>>>>>> 325231abbd43ff54c2399cb5a5d887c49d5fc115
-/Graphics/
+/utils/

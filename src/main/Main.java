@@ -19,8 +19,10 @@ import java.io.IOException;
 
 import objects.Instance3SAT;
 import objects.InstanceSAT;
+import objects.InstanceVC;
 import solver.Solver;
 import transform.To3SAT;
+import transform.ToVC;
 import utils.Loader;
 import utils.Sys;
 
@@ -37,20 +39,30 @@ public class Main {
 		Sys.out(inst);
 		
 		// SAT Satisfactible?
-		System.out.println("\n----- ï¿½ Satisfacibilidad ? -----");
+		System.out.println("\n----- ¿ Satisfacibilidad ? -----");
 		Solver.solve(inst);
 		
 		// transform to 3sat
-		System.out.println("\n----- SAT to 3SAT -----");
 		Instance3SAT inst3 = To3SAT.to3SAT(inst);
 		
 		// Imprimimos instancia 3SAT
         System.out.println("\n----- Instancia 3SAT -----");
-        Sys.out(inst);
+        Sys.out(inst3);
 		
 		// 3SAT Satisfactible?
-        System.out.println("\n----- ï¿½ Satisfacibilidad ? -----");
+        System.out.println("\n----- ¿ Satisfacibilidad ? -----");
         Solver.solve(inst3);
+        
+        // transform to vc
+        InstanceVC instVC = ToVC.toVC(inst3);
+        
+        // Imprimimos instancia VC
+        System.out.println("\n----- Instancia VC -----");
+        Sys.out(instVC);
+        
+        // 3SAT Satisfactible?
+        System.out.println("\n----- ¿ Satisfacibilidad ? -----");
+        instVC.solve();
 	}
 
 }

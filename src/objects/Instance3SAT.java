@@ -14,7 +14,7 @@
   */
 package objects;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 
 // El 3SAT es un caso particular de SAT.
 public class Instance3SAT extends InstanceSAT {
@@ -25,7 +25,7 @@ public class Instance3SAT extends InstanceSAT {
 	 * 
 	 * @param literals
 	 */
-	public Instance3SAT(ArrayList<String> literals) {
+	public Instance3SAT(HashSet<String> literals) {
 		this.valid = false;
 		this.setLiterals(literals);
 	}
