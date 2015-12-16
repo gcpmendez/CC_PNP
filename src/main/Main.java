@@ -5,8 +5,10 @@ import java.io.IOException;
 
 import objects.Instance3SAT;
 import objects.InstanceSAT;
+import objects.InstanceVC;
 import solver.Solver;
 import transform.To3SAT;
+import transform.ToVC;
 import utils.Loader;
 import utils.Sys;
 
@@ -36,6 +38,18 @@ public class Main {
 		// 3SAT Satisfactible?
         System.out.println("\n----- � Satisfacibilidad ? -----");
         Solver.solve(inst3);
+        
+        // transform to vc
+        System.out.println("\n----- SAT to 3SAT -----");
+        InstanceVC instVC = ToVC.toVC(inst3);
+        
+        // Imprimimos instancia VC
+        System.out.println("\n----- Instancia VC -----");
+        Sys.out(instVC);
+        
+        // 3SAT Satisfactible?
+        System.out.println("\n----- � Satisfacibilidad ? -----");
+        instVC.solve();
 	}
 
 }
