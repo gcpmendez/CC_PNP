@@ -6,11 +6,7 @@ import objects.Instance3SAT;
 import objects.InstanceSAT;
 import objects.Literal;
 
-public final class To3SAT {
-
-	/** CONSTRUCTOR */
-	private To3SAT() {
-	}
+public abstract class To3SAT {
 
 	public static Instance3SAT to3SAT(InstanceSAT SAT) {
 		Instance3SAT sat3 = new Instance3SAT(SAT.getLiterals());
